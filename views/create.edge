@@ -1,0 +1,63 @@
+@layout('layout.app')
+
+@section('styles')
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
+@endsection
+
+@section('content')
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('/img/contact-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>New Post</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!--  post form  -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <form action="/posts/store" method="POST" enctype="multipart/form-data">
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Title</label>
+              <input type="text" class="form-control" placeholder="Title" name="title" required data-validation-required-message="Please enter title.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Subtitle</label>
+              <input type="text" class="form-control" name="subtitle" placeholder="Subtitle" required data-validation-required-message="Please enter your description.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <label>Content</label>
+              <textarea id="summernote" name="content" placeholder="Content ..." cols="60" rows="10"></textarea>
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+            <div class="form-group mt-5">
+               <input type="file" name="image" class="form-control-file" > 
+            </div>
+          <div class="form-group my-4 text-center">
+            <button type="submit" class="btn btn-primary">Create Post</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+@endsection
+
+@section('scripts')
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+  <script> $('#summernote').summernote() </script>
+@endsection

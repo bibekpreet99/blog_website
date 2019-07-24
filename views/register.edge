@@ -1,0 +1,58 @@
+@layout('layout.app')
+
+@section('content')
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('/img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Register</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!--  post form  -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        @if(errors.length>0)
+          <ul class="list-group">
+            @each(error in errors)
+              <li class="list-group-item text-danger">
+                {{error}}
+              </li>
+            @endeach
+          </ul>
+        @endif
+        <form action="/users/register" method="POST" enctype="multipart/form-data">
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <label>Username</label>
+            <input type="text" class="form-control" value="{{data.username || ''}}" placeholder="Username" name="username">
+                <p class="help-block text-danger"></p>
+            </div>
+            <div class="form-group floating-label-form-group controls">
+              <label>Email</label>
+              <input type="email" class="form-control" value="{{data.email || ''}}" placeholder="Email" name="email">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Password</label>
+              <input type="password" class="form-control" name="password" placeholder="Password">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="form-group my-4 text-center">
+            <button type="submit" class="btn btn-primary">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+@endsection
